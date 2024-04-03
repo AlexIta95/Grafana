@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.5" Build="14.0.3346.1">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="SELECT * FROM Table1" StatementId="1" StatementCompId="1" StatementType="SELECT">
+          <QueryPlan CachedPlanSize="8" CompileTime="1" CompileCPU="1" CompileMemory="48">
+            <RelOp LogicalOp="Table Scan" NodeId="0" Parallel="false" EstimateRows="1000" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="11" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="1000">
+              <OutputList>
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Table1]" Alias="[Table1]" Column="Column1" />
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Table1]" Alias="[Table1]" Column="Column2" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="1000" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="0" />
+              </RunTimeInformation>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
