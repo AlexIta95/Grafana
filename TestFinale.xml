@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.5" Build="14.0.3346.1">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="SELECT * FROM Employees WHERE Salary &gt; 50000" StatementId="1" StatementCompId="1" StatementType="SELECT">
+          <QueryPlan CachedPlanSize="12" CompileTime="1" CompileCPU="0" CompileMemory="64">
+            <RelOp LogicalOp="Gather Streams" NodeId="0" Parallel="true" EstimateRows="200" EstimateIO="0" EstimateCPU="0.02" AvgRowSize="150" EstimatedTotalSubtreeCost="2">
+              <OutputList>
+                <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="ID" />
+                <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Name" />
+                <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="150" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="5" />
+              </RunTimeInformation>
+              <StreamAggregate>
+                <DefinedValues>
+                  <DefinedValue>
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="ID" />
+                  </DefinedValue>
+                  <DefinedValue>
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Name" />
+                  </DefinedValue>
+                  <DefinedValue>
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+                  </DefinedValue>
+                </DefinedValues>
+                <GroupBy>
+                  <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="ID" />
+                  <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Name" />
+                  <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+                </GroupBy>
+                <RelOp LogicalOp="Clustered Index Scan" NodeId="1" Parallel="false" EstimateRows="150" EstimateIO="0.3" EstimateCPU="0.015" AvgRowSize="150" EstimatedTotalSubtreeCost="2">
+                  <OutputList>
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="ID" />
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Name" />
+                    <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="150" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="5" />
+                  </RunTimeInformation>
+                  <IndexScan Ordered="false" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false">
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="ID" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Name" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+                      </DefinedValue>
+                    </DefinedValues>
+                    <Object Database="[Company]" Schema="[dbo]" Table="[Employees]" Index="[PK_Employees]" IndexKind="Clustered" />
+                    <Predicate>
+                      <ScalarOperator ScalarString="[Company].[dbo].[Employees].[Salary]&gt;(50000.000)">
+                        <Compare CompareOp="GT">
+                          <ScalarOperator>
+                            <Identifier>
+                              <ColumnReference Database="[Company]" Schema="[dbo]" Table="[Employees]" Alias="[Employees]" Column="Salary" />
+                            </Identifier>
+                          </ScalarOperator>
+                          <ScalarOperator>
+                            <Const ConstValue="(50000.000)" />
+                          </ScalarOperator>
+                        </Compare>
+                      </ScalarOperator>
+                    </Predicate>
+                  </IndexScan>
+                </RelOp>
+              </StreamAggregate>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
